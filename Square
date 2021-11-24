@@ -1,0 +1,34 @@
+class Square (var x: Int, var y: Int, var width: Int) : Movable, Transforming, Figure(0) {
+    // TODO: реализовать интерфейс Transforming
+
+    constructor(square: Square) : this (square.x, square.y, square.width)
+
+    override fun move(dx: Int, dy: Int) {
+        x += dx; y += dy
+    }
+
+    override fun resize(zoom: Int) {
+        width *= zoom
+    }
+
+    override fun area(): Float {
+        return (width*width).toFloat()
+    }
+
+    override fun toString(): String {
+        return "x: $x y: $y width: $width"
+    }
+
+    override fun rotate (direction: RotateDirection, centerX: Int, centerY: Int) {
+        when (direction) {
+            RotateDirection.Clockwise -> {
+                x = - (y - centerY) + centerX
+                y = (x - centerX) + centerY
+            }
+            RotateDirection.CounterClockwise -> {
+                y = - (y - centerY) + centerX
+                x = (x - centerX) + centerY
+            }
+        }
+    }
+}
