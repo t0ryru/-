@@ -1,0 +1,28 @@
+fun main() {
+
+    // интерфейсы удобно использовать в коллекциях
+    val figures: Array<Movable>
+    val movable: Movable = Rect(0,0,1,1)
+    movable.move(1,1)
+    // переменной базового класса
+    val f: Figure = Rect(0,0,1,1)
+    val f2: Figure = Circle(1,2,3)
+    val f3: Transforming = Rect (1, 1, 2, 3)
+    f3.rotate(direction = RotateDirection.CounterClockwise, centerX = 3, centerY = 3)
+
+    println("Прямоугольник f: ${f.toString()}")
+    println("Площадь f: ${f.area()}")
+    f.resize(2)
+    println("f, увеличенный в 2 раза ${f.toString()}")
+
+    println("Круг f2: ${f2.toString()}")
+    println("Площадь f2: ${f2.area()}")
+
+    println("Квадрат movable: ${movable.toString()}")
+    println("Передвинутый на 1;1 прямоугольник movable ${movable.toString()}")
+
+    println("Прямоугольник f3: ${f.toString()}")
+    println("Прямоугольник f3, повернутый на 90 градусов вокруг точки centerX, centerY: ${f3.toString()}")
+
+
+}
